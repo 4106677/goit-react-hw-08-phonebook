@@ -11,7 +11,3 @@ export const Section = styled.div`
   border-radius: 10px;
   background-color: #fff;
 `;
-
-export const H1 = styled.h1`
-  margin-top: 0;
-`;

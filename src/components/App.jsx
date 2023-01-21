@@ -1,20 +1,21 @@
-import { ContactForm } from './ContactForm/ContactForm';
-import { ContactList } from './ContactList/ContactList';
-import { Filter } from './Filter/Filter';
+import { Route, Routes } from 'react-router-dom';
 import { GlobalStyle } from './GlobalStyles';
-
-import { Section, H1 } from './App.styled';
+import { Layout } from './Layout/Layout';
+import { Login } from '../pages/Login/Login';
+import { Register } from '../pages/Register/Register';
+import { Contacts } from 'pages/Contacts/Contacts';
 
 export function App() {
   return (
-    <Section>
-      <H1>Phonebook</H1>
-      <ContactForm />
-
-      <h2>Contacts</h2>
-      <Filter />
-      <ContactList />
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Contacts />} />
+          <Route path="register" element={<Register />} />
+          <Route path="login" element={<Login />} />
+        </Route>
+      </Routes>
       <GlobalStyle />
-    </Section>
+    </>
   );
 }
