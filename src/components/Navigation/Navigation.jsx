@@ -1,20 +1,33 @@
-import { Header, NavItem } from './Navigation.styled';
+import { useAuth } from 'components/hooks/useAuth';
 
-const navItems = [
-  { href: '/', text: 'Home' },
-  { href: 'register', text: 'Register' },
-  { href: 'login', text: 'Log In' },
-];
+import { Header, NavItem } from './Navigation.styled';
+import { UserMenu } from 'components/UserMenu/UserMenu';
 
 export const Navigation = () => {
+  const { isLoggedIn } = useAuth();
+
   return (
     <>
       <Header>
-        {navItems.map(({ href, text }) => (
-          <NavItem to={href} key={href}>
-            {text}
-          </NavItem>
-        ))}
+        <NavItem to="/" key="home">
+          {isLoggedIn ? 'Contacts' : 'Home'}
+        </NavItem>
+        {isLoggedIn ? (
+          <UserMenu />
+        ) : (
+          <ul>
+            <li>
+              <NavItem to="register" key="register">
+                Register
+              </NavItem>
+            </li>
+            <li>
+              <NavItem to="login" key="login">
+                Log In
+              </NavItem>
+            </li>
+          </ul>
+        )}
       </Header>
     </>
   );
