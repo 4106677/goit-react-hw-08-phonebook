@@ -17,7 +17,7 @@ export function App() {
 
   useEffect(() => {
     dispatch(refresh());
-  });
+  }, [dispatch]);
 
   return isRefreshing ? (
     'More minutes later...'
