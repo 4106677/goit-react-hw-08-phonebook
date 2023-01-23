@@ -1,4 +1,3 @@
-import { nanoid } from '@reduxjs/toolkit';
 import { Report } from 'notiflix/build/notiflix-report-aio';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -43,8 +42,7 @@ export const ContactForm = () => {
       return;
     }
 
-    const id = nanoid(4);
-    dispatch(addContact({ name, number, id }));
+    dispatch(addContact({ name, number }));
     Report.success('Great!', `${name} added`, 'Okay');
     event.target.reset();
   };

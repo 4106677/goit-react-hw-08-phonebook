@@ -4,15 +4,36 @@ import { Layout } from './Layout/Layout';
 import { Login } from '../pages/Login/Login';
 import { Register } from '../pages/Register/Register';
 import { Contacts } from 'pages/Contacts/Contacts';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { refresh } from 'Redux/auth/operations';
+import { useAuth } from './hooks/useAuth';
+import { RestrictedRoute } from './RestrictedRoute';
 
 export function App() {
-  return (
+  const dispatch = useDispatch();
+
+  const { isRefreshing } = useAuth();
+
+  useEffect(() => {
+    dispatch(refresh());
+  });
+
+  return isRefreshing ? (
+    'More minutes later...'
+  ) : (
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Contacts />} />
-          <Route path="register" element={<Register />} />
-          <Route path="login" element={<Login />} />
+          <Route
+            path="register"
+            element={<RestrictedRoute component={Register} redirectTo={'/'} />}
+          />
+          <Route
+            path="login"
+            element={<RestrictedRoute component={Login} redirectTo={'/'} />}
+          />
         </Route>
       </Routes>
       <GlobalStyle />
