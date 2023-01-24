@@ -7,17 +7,30 @@ export const H1 = styled.h1`
 
 export const Header = styled.header`
   /* margin-left: 10px; */
-  /* display: flex;
-  justify-content: left;
-  align-items: flex-start; */
+  display: flex;
+  flex-direction: row;
+
+  /* justify-content: left; */
+  align-items: baseline;
+
+  width: 100%;
+  height: 25px;
+
+  padding-bottom: 10px;
 `;
 
 export const NavItem = styled(NavLink)`
   &:first-child {
-    margin-right: 150px;
+    /* margin-right: 50px; */
   }
   &:not(:first-child) {
     margin-left: 10px;
-    align-items: flex-end;
+    /* align-items: flex-end; */
   }
+`;
+
+export const List = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
 `;

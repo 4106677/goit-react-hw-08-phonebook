@@ -29,7 +29,6 @@ export const ContactForm = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    // const addedContact = event.target.name.value;
 
     if (
       contacts.find(
