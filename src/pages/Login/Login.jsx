@@ -20,6 +20,7 @@ export const Login = () => {
 
   return (
     <>
+      <p>Please Log In or Register</p>
       <Form onSubmit={handleSubmit} autoComplete="off">
         <Label>Email</Label>
         <Input type="tel" name="email" required />
