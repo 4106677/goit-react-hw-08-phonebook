@@ -20,6 +20,10 @@ export const Header = styled.header`
 `;
 
 export const NavItem = styled(NavLink)`
+  &.active {
+    visibility: hidden;
+    width: 0;
+  }
   &:first-child {
     /* margin-right: 50px; */
   }
